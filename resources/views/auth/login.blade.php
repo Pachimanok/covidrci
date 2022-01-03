@@ -82,6 +82,11 @@
                                         {{ __('Login') }}
                                     </button>
                                 </div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <a href="{{ route('register') }}" class="btn btn-outline-light  ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+
+                                </div>
+                                
                                 {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}

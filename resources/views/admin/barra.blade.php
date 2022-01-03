@@ -21,7 +21,10 @@
                         <a class="nav-link" href="/transferencias">Transferencias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/transferencias/create">Crear Transeferencia.</a>
+                        <a class="nav-link" href="/transferencias/create">Crear Transeferencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/export">Excel</a>
                     </li>
                 </ul>
                

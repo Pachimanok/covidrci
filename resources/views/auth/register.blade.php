@@ -47,7 +47,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-center text-white">{{ __('Usuario') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" placeholder="Coloque el mismo que RCI" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                         <div class="form-group row mt-2">
                             <label for="email" class="col-md-4 col-form-label text-md-center text-white">{{ __('Correo Electronico') }}</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" placeholder="Coloque el mismo que RCI" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
                         <div class="form-group row mt-2">
                             <label for="password" class="col-md-4 col-form-label text-md-center text-white">{{ __('Contraseña') }}</label>
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" placeholder="Coloque la misma que RCI" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -80,7 +80,7 @@
                         <div class="form-group row mt-2">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-center text-white">{{ __('Repetir Contraseña') }}</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" placeholder="Repetir contraseña"type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         <div class="form-group row mb-0 mt-2">
@@ -89,6 +89,9 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
+                                </div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <a href="{{ route('login') }}" class="btn btn-outline-light  text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
                                 </div>
                             </div>
                         </div>
