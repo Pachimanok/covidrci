@@ -44,7 +44,7 @@
         </div>
         <div class="row">
             <div class="col-sm-5 text-center mx-auto">
-                <h3 class="text-success">Total a Cobrar: USD {{$pagar}}.00</h3>
+                <h3 class="text-success">Total a Cobrar: USD {{number_format($pagar,2)}}    </h3>
             </div>
         </div>
         <div class="row mt-5">

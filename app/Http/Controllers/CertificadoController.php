@@ -153,19 +153,22 @@ class CertificadoController extends Controller
         $montoDia = $variables[1]->monto;
 
         
+
+        
         // Costo del Seguro
         $cantidadPers = $aseguradosReview->count();
         $datetime1 = date_create($aseguradosReview[0]->fecha_final);
         $datetime2 = date_create($aseguradosReview[0]->fecha_emision);
        
-        $diff = $datetime2->diff($datetime1)->format('%a');
+        $diff = $datetime2->diff($datetime1)->format('%a')+1;
         $base =  $montoBase; // 6 usd.
-        $diasDeMas = $diff - 5; // días que se pagan aparte
 
-        if($diasDeMas > 0 ){
+        $diasDeMas = $diff * $montoDia; // días que se pagan aparte
 
-            $diasDeMasUsd =  $diasDeMas * $montoDia; // 1usd.
-            $subtotal = $base + $diasDeMasUsd; // por Persona;
+        if($diasDeMas > 5 ){
+
+          
+            $subtotal =  $diasDeMas; // por Persona;
             
             $total = $cantidadPers * $subtotal; // todos
            
@@ -236,7 +239,7 @@ class CertificadoController extends Controller
         $data = [
             'titulo' => 'Styde.net',
             'hoy' => Carbon::now()->format('d/m/Y'),
-            'poliza' => 'BOCHA89',
+            'poliza' => $certificado->id,
             'tomador' => $certificado->nombre,
             'rut' => $certificado->doc_numero,
             'domicilio' => $certificado->domicilio,
