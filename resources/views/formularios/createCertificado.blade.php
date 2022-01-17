@@ -75,15 +75,15 @@
                         
                     </td>
                 </tr>
-                <tr>
+               {{--  <tr>
                     <td class="p-1 pt-3">
                         <label for="archivo">PCR:</label>
                     </td>
                     <td class="p-1 pt-3" style="width:4rem;">
                         <input type="file" name="asegurado_pcr" class="form-control">
                     </td>
-                </tr>
-                <tr>
+                </tr> --}}
+                <tr style="    border: white;">
                     <td class="p-1 pt-3" style="width:4rem;">
 
                     </td>
@@ -91,10 +91,10 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr class="border-none">
                     <td class="p-1">¿Toma medicamentos de manera habitual?:</td>
                     <td class="p-1 text-left"><input type="checkbox" name="asegurado_medicamentos[]" value="si" > Si | <input
-                            type="checkbox" name="asegurado_medicamentos" value="no"> No</td>
+                            type="checkbox" name="asegurado_medicamentos[]" value="no" checked> No</td>
                 </tr>
                 <tr>
                     <td><label for="nombre">¿Cuales?:</label></td>
@@ -104,7 +104,7 @@
                 <tr>
                     <td class="p-1">¿Actualmente está cursando sintomas asociados al COVID-19?:</td>
                     <td class="p-1 text-left"><input type="checkbox" name="asegurado_sintomas[]" value="si" > Si | <input
-                            type="checkbox" name="asegurado_sintomas[]" value="no"> No</td>
+                            type="checkbox" name="asegurado_sintomas[]" value="no" checked> No</td>
                 <tr>
 
                     <td><label for="nombre">Especifique:</label></td>
@@ -113,8 +113,8 @@
                 <tr>
                     <td class="p-1">¿Estuvo expuesto en los úlitmos 10 días a situaciones de mayor riesgo que
                         puedan derivar en contagio de COVID-19?:</td>
-                    <td class="p-1 text-left"><input type="checkbox" name="asegurado_ulitmosDias[]" value="si"> Si | <input
-                            type="checkbox" name="asegurado_ultimaosDias[]" value="no"> No</td>
+                    <td class="p-1 text-left"><input type="checkbox" name="asegurado_ultimosDias[]" value="si"> Si | <input
+                            type="checkbox" name="asegurado_ultimosDias[]" value="no" checked> No</td>
                 </tr>
                 <tr>
                     <td><label for="nombre">Especifique:</label></td>
@@ -125,7 +125,7 @@
                     <td class="p-1">¿Estuvo en contacto estrecho con alguna persona COVID-19 Positivo en los
                         ultimos 15 dias?:</td>
                     <td class="p-1 text-left"><input type="checkbox" name="asegurado_contactoEstrecho[]" value="si"> Si | <input
-                            type="checkbox" name="asegurado_contactoEstrecho[]" value="no"> No</td>
+                            type="checkbox" name="asegurado_contactoEstrecho[]" value="no" checked> No</td>
                 </tr>
                 <tr>
                     <td><label for="nombre">Especifique:</label></td>
@@ -140,7 +140,7 @@
             Acompañante</button></legend>
     <hr>
 
-    <div class="tabla mt-3"></div>
+    <div class="tablaCargar"></div>
 
     <div class="row mt-4">
         <div class="col-sm-5 mx-auto text-center">
@@ -150,65 +150,91 @@
 </form>
 
 
-
 </div>
 <script>
+    var counterVal = 0;
+
+    function updateDisplay(val) {
+
+        
+        var click =  val;
+
+        var fila = '<div class="tabla mt-3">'+
+
+                    '<table>'+
+
+                    '<tr><td>&nbsp;</td>' +
+
+                    '<td class="p-1 pt-3"><label for="nombre"> Nombre y Apellido:</label><input type="text" class="form-control" name="nombre[]" required><span class="badge badge-light text-secondary"> </span></td>' +
+
+                    '<td class="p-1 pt-3"><label for="rut">RUT:</label><input type="text" name="rut[]" class="form-control"required ><span class="badge badge-light text-secondary"> </span></td>' +
+
+                    '<td class="p-1 pt-3" style="width:8rem;"><label for="altura">Altura:</label><input type="number" min="0" max="3" step=".01" name="altura[]" class="form-control"><span class="badge badge-light text-secondary">Separar con punto</span></td>' +
+
+                    '<td class="p-1 pt-3" style="width:8rem;"><label for="peso">Peso:</label><input type="number" min="0" max="200" name="peso[]" class="form-control"><span class="badge badge-light text-secondary"> </span></td>' +
+
+                    '<td class="p-1 pt-3 text-center" style="width:8rem;"><button onclick="remove(this)" type="button" class="btn btn-danger">Eliminar</button></td>' +
+
+                    '</tr>' +
+
+                    '<tr><td>&nbsp;</td>' +
+                    '<td class="p-1">¿Toma medicamentos de manera habitual?:</td>' +
+                    '<td class="p-1 text-center"><select class="form-control mx-auto text-center" style="width:4rem;" name="medicamentos[]" id=""><option value="no">NO</option><option value="si">SI</option></select></td>' +
+                    '<td class="text-center"><label for="nombre">¿Cuales?:</label></td>' +
+                    '<td class="p-1" colspan="2"><input type="text" class="form-control" name="medicamento_detalle[]"></td>' +
+                    '</tr>' +
+                    '<tr><td>&nbsp;</td>' +
+                    '<td class="p-1">¿Actualmente está cursando sintomas asociados al COVID-19?:</td>' +
+                    '<td class="p-1 text-center"><select class="form-control mx-auto text-center" style="width:4rem;" name="sintomas[]" id=""><option value="no">NO</option><option value="si">SI</option></select></td>' +
+                    '<td class="text-center"><label for="nombre">Especifique:</label></td>' +
+                    '<td class="p-1" colspan="2"><input type="text" class="form-control" name="sintomas_detalle[]"></td>' +
+                    '</tr>' +
+                    '<tr><td>&nbsp;</td>' +
+                    '<td class="p-1">¿Estuvo expuesto en los úlitmos 10 días a situaciones de mayor riesgo que puedan derivar en contagio de COVID-19?:</td>' +
+                    '<td class="p-1 text-center"><select class="form-control mx-auto text-center" style="width:4rem;" name="ultimosDias[]" id=""><option value="no">NO</option><option value="si">SI</option></select></td>' +
+                    '<td class="text-center"><label for="nombre">Especifique:</label></td>' +
+                    '<td class="p-1" colspan="2"><input type="text" class="form-control" name="ultimosDias_detalle[]"></td>' +
+                    '</tr>' +
+                    '<tr><td style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;">&nbsp;</td>' +
+                    '<td class="p-1" style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;">¿Estuvo en contacto estrecho con alguna persona COVID-19 Positivo en los ultimos 15 dias?:</td>' +
+                    '<td class="p-1 text-center" style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;"><select class="form-control mx-auto text-center" style="width:4rem;" name="contactoEstrecho[]" id=""><option value="no">NO</option><option value="si">SI</option></select></td>' +
+                    '<td style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;" class="text-center"><label for="nombre">Especifique:</label></td>' +
+                    '<td class="p-1" style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;" colspan="2"><input type="text" class="form-control" name="contactoEstrecho_detalle[]"></td>' +
+                    '</tr>' +
+                    '<hr>' +
+                    '</table>'+
+                    '</div>';
+
+                    //añado fila a la tabla
+
+                    $('.tablaCargar').append(fila);
+        };
+    
     $('#button').click(function() {
-
-        //creo una nueva fila
-
-
-        var fila = '<tr><td>&nbsp;</td>' +
-
-            '<td class="p-1 pt-3"><label for="nombre"> Nombre y Apellido:</label><input type="text" class="form-control" name="nombre[]" required></td>' +
-
-            '<td class="p-1 pt-3"><label for="rut">RUT:</label><input type="text" name="rut[]" class="form-control"required ></td>' +
-
-            '<td class="p-1 pt-3" style="width:4rem;"><label for="altura">Altura:</label><input type="number" min="0" max="3" step=".01" name="altura[]" class="form-control"></td>' +
-
-            '<td class="p-1 pt-3" style="width:4rem;"><label for="peso">Peso:</label><input type="number" min="0" max="200" name="peso[]" class="form-control"></td>' +
-
-            '<td class="p-1 pt-3"><label for="archivo">PCR:</label><input type="file" name="pcr[]" class="form-control"></td>' +
-
-            '</tr>' +
-
-            '<tr><td>&nbsp;</td>' +
-            '<td class="p-1">¿Toma medicamentos de manera habitual?:</td>' +
-            '<td class="p-1 text-center"><input type="checkbox" name="medicamentos[]" value="si"> Si | <input type="checkbox" name="medicamentos[]" value="no"> No</td>' +
-            '<td>&nbsp;</td>' +
-            '<td><label for="nombre">¿Cuales?:</label></td>' +
-            '<td class="p-1"><input type="text" class="form-control" name="medicamento_detalle[]"></td>' +
-            '</tr>' +
-            '<tr><td>&nbsp;</td>' +
-            '<td class="p-1">¿Actualmente está cursando sintomas asociados al COVID-19?:</td>' +
-            '<td class="p-1 text-center"><input type="checkbox" name="sintomas[]" value="si"> Si | <input type="checkbox" name="sintomas[]" value="no"> No</td>' +
-            '<td>&nbsp;</td>' +
-            '<td><label for="nombre">Especifique:</label></td>' +
-            '<td class="p-1"><input type="text" class="form-control" name="sintomas_detalle[]"></td>' +
-            '</tr>' +
-            '<tr><td>&nbsp;</td>' +
-            '<td class="p-1">¿Estuvo expuesto en los úlitmos 10 días a situaciones de mayor riesgo que puedan derivar en contagio de COVID-19?:</td>' +
-            '<td class="p-1 text-center"><input type="checkbox" name="ultimosDias[]" value="si"> Si | <input type="checkbox" name="ultimosDias[]" value="no"> No</td>' +
-            '<td>&nbsp;</td>' +
-            '<td><label for="nombre">Especifique:</label></td>' +
-            '<td class="p-1"><input type="text" class="form-control" name="ultimosDias_detalle[]"></td>' +
-            '</tr>' +
-            '<tr><td style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;">&nbsp;</td>' +
-            '<td class="p-1" style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;">¿Estuvo en contacto estrecho con alguna persona COVID-19 Positivo en los ultimos 15 dias?:</td>' +
-            '<td class="p-1 text-center" style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;"><input type="checkbox" name="contactoEstrecho[]" value="si"> Si | <input type="checkbox" name="contactoEstrecho[]" value="no"> No</td>' +
-            '<td style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;">&nbsp;</td>' +
-            '<td style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;"><label for="nombre">Especifique:</label></td>' +
-            '<td class="p-1" style="border-bottom: #d6cece;border-style: solid;border-width: 2px;border-top: none;border-left: none;border-right: none;"><input type="text" class="form-control" name="contactoEstrecho_detalle[]"></td>' +
-            '</tr>' +
-            '<hr>';
-
-
-
-        //añado fila a la tabla
-
-        $('.tabla').append(fila);
-
-
+        
+        updateDisplay(++counterVal);    
 
     });
+    
+    function remove(item) {
+          
+            $(item).closest('div').remove()
+    };
+    
+    $("input:checkbox").on('click', function() {
+        
+        var $box = $(this);
+        if ($box.is(":checked")) {
+        
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+        
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+
+        } else {
+
+            $box.prop("checked", false);
+        };
+    });    
+   
 </script>

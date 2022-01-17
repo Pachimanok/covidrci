@@ -95,7 +95,7 @@ class transferenciasController extends Controller
                 $transferencia = new Transferencia();
                 $transferencia->fecha = $fecha;
                 $transferencia->monto = $montoAcumulado *0.8;
-                $transferencia->tipo_cambio_usd = '871';
+                $transferencia->tipo_cambio_usd = '821';
                 $transferencia->save();
                 
 
@@ -129,7 +129,7 @@ class transferenciasController extends Controller
         $transferencia = new Transferencia();
         $transferencia->fecha = $fecha;
         $transferencia->monto = $montoAcumulado *0.8;
-        $transferencia->tipo_cambio_usd = '871';
+        $transferencia->tipo_cambio_usd = '821';
         $transferencia->save();
 
         $data = transferencia::latest('id')->first();

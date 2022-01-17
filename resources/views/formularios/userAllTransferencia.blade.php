@@ -9,7 +9,7 @@
     @foreach ($transferencias as $transferencia)
     <div class="card @if($transferencia->estado == 'emitida')alert-danger @else alert-success @endif p-2 m-3">
         <h5>Transferencia pendiente emitida: <strong>{{$transferencia->fecha}}</strong></h5>   
-        <p>USD: {{number_format($transferencia->monto,2)}}.00 - CLP {{number_format($transferencia->monto * $transferencia->tipo_cambio_usd,2)}}</p>
+        <p>USD: {{number_format($transferencia->monto,2)}} - CLP {{number_format($transferencia->monto * $transferencia->tipo_cambio_usd,2)}}</p>
         <div class="row">
             <div class="col-sm-3 d-grid gap-2">
                 <a href="transferencias/{{$transferencia->id_transferencia}}" class="btn @if($transferencia->estado == 'emitida')btn-danger @else btn-success @endif">Detalle</a>

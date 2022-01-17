@@ -48,15 +48,18 @@ class CertificadoController extends Controller
      */
     public function store(Request $request)
     {
+          
             $usuario = Auth::user();
             $user = $usuario->name;
 
             // +++++++++++ Generar certificado Madre +++++++++++ //
             
             // Para generar Madre Necesitamos ID de asegurado.
-            foreach($request->get('asegurado_ultimaosDias') as $asegurado_ultimaosDias);
+            foreach($request->get('asegurado_ultimosDias') as $asegurado_ultimosDias);
             foreach($request->get('asegurado_contactoEstrecho') as $asegurado_contactoEstrecho);
             foreach($request->get('asegurado_sintomas') as $asegurado_sintomas);
+            foreach($request->get('asegurado_medicamentos') as $asegurado_medicamentos);
+
 
             $asegurado = new Asegurado();
             $asegurado->nombre = $request->get('tomador_nombre');
@@ -68,12 +71,12 @@ class CertificadoController extends Controller
             $asegurado->orden = '1';
             $asegurado->peso = $request->get('asegurado_peso');
             $asegurado->altura = $request->get('asegurado_altura');  
-            $asegurado->toma_medicamento = $request->get('asegurado_medicamentos');
+            $asegurado->toma_medicamento = $asegurado_medicamentos;
             $asegurado->pcr = $request->get('asegurado_pcr');
             $asegurado->cual_medicamento = $request->get('asegurado_medicamento_detalle');
             $asegurado->sintomas = $asegurado_sintomas;
             $asegurado->cual_sintoma = $request->get('asegurado_sintomas_detalle');
-            $asegurado->expuesto = $asegurado_ultimaosDias;
+            $asegurado->expuesto = $asegurado_ultimosDias;
             $asegurado->cual_expuesto = $request->get('asegurado_ultimosDias_detalle');
             $asegurado->contacto = $asegurado_contactoEstrecho;
             $asegurado->cual_contacto= $request->get('asegurado_contactoEstrecho_detalle');
@@ -152,34 +155,33 @@ class CertificadoController extends Controller
         $montoBase = $variables[0]->monto;
         $montoDia = $variables[1]->monto;
 
-        
-
-        
         // Costo del Seguro
         $cantidadPers = $aseguradosReview->count();
+        
         $datetime1 = date_create($aseguradosReview[0]->fecha_final);
         $datetime2 = date_create($aseguradosReview[0]->fecha_emision);
        
         $diff = $datetime2->diff($datetime1)->format('%a')+1;
+        
         $base =  $montoBase; // 6 usd.
-
+        
         $diasDeMas = $diff * $montoDia; // días que se pagan aparte
-
+        
         if($diasDeMas > 5 ){
-
           
             $subtotal =  $diasDeMas; // por Persona;
             
             $total = $cantidadPers * $subtotal; // todos
            
-
+            
             $costo = Certificado::find($id_cer);
             $costo->costo = $total;
             $costo->save();
 
         }else{
             
-        $total = $base;
+        $total = $base * $cantidadPers;
+
         $costo = Certificado::find($id_cer);
         $costo->costo = $total;
         $costo->save();
@@ -272,6 +274,12 @@ class CertificadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alianza = Certificado::find($id);
+        $alianza->delete();
+
+        $asegurado = Asegurado::where('id_certificado', '=', $id); 
+        $asegurado->delete();
+
+        return redirect('/home');
     }
 }

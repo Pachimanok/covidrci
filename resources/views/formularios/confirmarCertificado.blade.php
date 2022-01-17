@@ -44,18 +44,28 @@
         </div>
         <div class="row">
             <div class="col-sm-5 text-center mx-auto">
-                <h3 class="text-success">Total a Cobrar: USD {{number_format($pagar,2)}}    </h3>
+                <h3 class="text-success">Total a Cobrar: USD {{number_format($pagar,2)}}</h3>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-sm-6 mx-auto text-center">
-                <form action="certificado/{{ $id_cer}}" method="post">
-                    @method('put')
-                    @csrf
-                    <button type="submit" class="btn btn-lg btn-primary">Emitir Certificado</button>
+            <div class="col-sm-8 mx-auto text-center">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <form action="certificado/{{ $id_cer}}" method="post">
+                        @method('put')
+                        @csrf
+                        <button type="submit" class="btn btn-lg btn-primary" style="width: 13rem;">Emitir Certificado</button>
+                    </form>
+                    <form action="certificado/{{ $id_cer}}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button href="/certificado/{{ $id_cer}}"
+                        onclick="return confirm('¿Está seguro? Se eliminaran todos los datos deberá volver a cargarlos')"
+                        class="btn btn-danger btn-lg" style="margin-left: 1rem; width: 13rem;">No emitir</button>
+                    </form>
+                  </div>
                 
-                <button class="btn btn-lg btn-danger">No emitir</button>
-                </form>
+                
+               
             </div>
            
         </div>

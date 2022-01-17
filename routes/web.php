@@ -47,6 +47,7 @@ Route::resource('certificado', 'App\Http\Controllers\CertificadoController');
 Route::resource('transferencias', 'App\Http\Controllers\transferenciasController');
 Route::resource('usuarios', 'App\Http\Controllers\userController');
 Route::resource('export', 'App\Http\Controllers\excelController');
+Route::resource('prueba', 'App\Http\Controllers\pruebaController');
 
 
 
