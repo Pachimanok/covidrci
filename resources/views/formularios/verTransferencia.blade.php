@@ -25,8 +25,7 @@
                 <td width="25%">Cerfitificado COVID</td>
                 <td width="25%">{{ $certficado->id_asegurado }}</td>
                 <td width="25%">{{ $certficado->created_at }}</td>
-                <td width="25%">USD {{ number_format($certficado->costo,2) }}</td>
-              
+                <td width="25%">USD {{ number_format($certficado->costo * 0.8 ,2)  }}</td>
             </tr>
             @endforeach
         </tbody>

@@ -27,13 +27,13 @@ Route::get('/home', function () {
 
     if($role == 'Admin'){
 
-        $qcertificado =  DB::table('certificados')->join('asegurados','asegurados.id_certificado','=','certificados.id')->groupBy('asegurados.id_certificado')->get();
+        $qcertificado =  DB::table('certificados')->join('asegurados','asegurados.id_certificado','=','certificados.id')->groupBy('asegurados.id_certificado')->orderBy('certificados.id','DESC')->get();
    
         return view('admin.home')->with('certficados',$qcertificado)->with('user',$usuario);
 
     }else{
 
-        $qcertificado =  DB::table('certificados')->join('asegurados','asegurados.id_certificado','=','certificados.id')->where('certificados.user','=',$user)->groupBy('asegurados.id_certificado')->get();
+        $qcertificado =  DB::table('certificados')->join('asegurados','asegurados.id_certificado','=','certificados.id')->where('certificados.user','=',$user)->groupBy('asegurados.id_certificado')->orderBy('certificados.id','DESC')->get();
    
         return view('home')->with('certficados',$qcertificado)->with('user',$usuario);
 

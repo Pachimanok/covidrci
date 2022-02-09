@@ -8,11 +8,11 @@
         </td>
     </tr>
 </table>
-<h3 style="text-align:center; margin-button: 2%;">Certificado de Incorporacion N°</h3>
+<h3 style="text-align:center; margin-button: 2%;">Certificado de Incorporacion N° {{$poliza}}</h3>
 <table width="100%" border="1" cellpadding="2" cellspacing="0" bordercolor="#999999" class="tablaContenido">
     <tr>
         <td align="left" width="25%" class="tdContenidoItem"><strong>Póliza: </strong></td>
-        <td colspan="2" width="25%" bgcolor="#E9E9E9" class="tdContenido">{{$poliza}}</td>
+        <td colspan="2" width="25%" bgcolor="#E9E9E9" class="tdContenido"> TAK-2022</td>
         <td align="left" width="25%" class="tdContenidoItem"><strong>Tomador:</strong></td>
         <td colspan="2" width="25%" bgcolor="#E9E9E9" class="tdContenido">{{$tomador}}</td>
     </tr>
@@ -77,10 +77,10 @@
     <tr>
         <td>
             <p><small style="font-size:0.8rem;">
-                Se abona al asegurado un monto de 5.400,00 por cada día que permanezca internado en una institución
+                Se abona al asegurado un monto de USD 5.400,00 por cada día que permanezca internado en una institución
                 de salud ya sea en sala común, terapia intermedia o terapia intensiva a consecuencia de haber contraído
                 el virus COVID-19
-                Se abona al asegurado un monto de 5.400,00 por cada día de estadía por reposo forzoso (prolongación de
+                Se abona al asegurado un monto de USD 5.400,00 por cada día de estadía por reposo forzoso (prolongación de
                 la estadía), en caso de que el asegurado deba permanecer en aislamiento a consecuencia de haber
                 contraído el virus COVID-19
                 Cuando se trate de internación del asegurado en una institución de salud, se abona por un periodo máximo
