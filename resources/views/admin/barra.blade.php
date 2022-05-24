@@ -12,19 +12,22 @@
             <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/home">Certificados</a>
+                        <a class="nav-link active" aria-current="page" href="/covidrci/public/home">Certificados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/usuarios">Usuarios</a>
+                        <a class="nav-link" href="/covidrci/public/usuarios">Usuarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/transferencias">Transferencias</a>
+                        <a class="nav-link" href="/covidrci/public/transferencias">Transferencias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/transferencias/create">Crear Transeferencia</a>
+                        <a class="nav-link" href="/covidrci/public/transferencias/create">Crear Transeferencia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/export">Excel</a>
+                        <a class="nav-link" href="/covidrci/public/export">Excel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/covidrci/public/estadisticas">Estadisticas</a>
                     </li>
                 </ul>
                

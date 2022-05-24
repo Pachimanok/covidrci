@@ -1,7 +1,7 @@
 @include('layouts.header')
 <div class="container">
     @include('admin.barra')
-    <form action="/transferencias/{{ $id }}" method="post">
+    <form action="/covidrci/public/transferencias/{{ $id }}" method="post">
         @method('put')
         @csrf
         <div class="row">

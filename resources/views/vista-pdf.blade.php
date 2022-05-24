@@ -14,7 +14,7 @@
         <td align="left" width="25%" class="tdContenidoItem"><strong>Póliza: </strong></td>
         <td colspan="2" width="25%" bgcolor="#E9E9E9" class="tdContenido"> TAK-2022</td>
         <td align="left" width="25%" class="tdContenidoItem"><strong>Tomador:</strong></td>
-        <td colspan="2" width="25%" bgcolor="#E9E9E9" class="tdContenido">{{$tomador}}</td>
+        <td colspan="2" width="25%" bgcolor="#E9E9E9" class="tdContenido">{{$tomador}} {{$tomadora}}</td>
     </tr>
     <tr>
         <td align="left" width="25%" class="tdContenidoItem"><strong>Motivo del Endoso:</strong></td>
@@ -48,12 +48,12 @@
     <tr>
         <td>
             <ul>
-                <li>Asegurado: {{ $rut }} - {{ $tomador}} - TITULAR</li>
+                <li>Asegurado: {{ $rut }} - {{ $tomador}} {{ $tomadora}}- TITULAR</li>
                
                @foreach ($asegurados[0] as $asegurado)
               
 
-                     <li>Asegurado: {{ $asegurado->doc_numero}} - {{ $asegurado->nombre}} - TITULAR</li> 
+                     <li>Asegurado: {{ $asegurado->doc_numero}} - {{ $asegurado->nombre}} {{ $asegurado->apellido}}- TITULAR</li> 
                
               @endforeach 
                 
@@ -77,7 +77,7 @@
     <tr>
         <td>
             <p><small style="font-size:0.8rem;">
-                Se abona al asegurado un monto de USD 5.400,00 por cada día que permanezca internado en una institución
+                Se abona al asegurado un monto de $ 5.400,00 por cada día que permanezca internado en una institución
                 de salud ya sea en sala común, terapia intermedia o terapia intensiva a consecuencia de haber contraído
                 el virus COVID-19
                 Se abona al asegurado un monto de USD 5.400,00 por cada día de estadía por reposo forzoso (prolongación de

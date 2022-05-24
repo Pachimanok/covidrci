@@ -29,7 +29,7 @@
         @include('layouts.barra')
         <legend>Fecha de Cobertura</legend>
         <hr>
-        <form action="/certificado" method="POST" enctype="multipart/form-data">
+        <form action="/covidrci/public/certificado" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="col-sm-9">
                 <table class="table table-stripped">
@@ -82,6 +82,10 @@
                             <td><input type="text" name="tomador_nombre" class="form-control" required></td>
                         </tr>
                         <tr>
+                            <td class="tableAsegurado"><label for="nombre">Apellido</label></td>
+                            <td><input type="text" name="tomador_apellido" class="form-control" required></td>
+                        </tr>
+                        <tr>
                             <td><label for="nombre">RUT</label></td>
                             <td><input type="text" name="tomador_rut" placeholder="1122334455" maxlength="25"
                                     class="form-control" required>
@@ -89,6 +93,10 @@
                                     para
                                     RUT.</span>
                             </td>
+                        </tr>
+                        <tr>
+                            <td class="tableAsegurado"><label for="nombre">Fecha de Naciemiento</label></td>
+                            <td><input type="date" name="tomador_fecha_nacimiento" class="form-control" required></td>
                         </tr>
                         <tr>
                             <td><label for="nombre">Domicilio</label></td>
@@ -229,15 +237,19 @@
 
                 '<tr><td>&nbsp;</td>' +
 
-                '<td class="p-1 pt-3"><label for="nombre"> Nombre y Apellido:</label><input type="text" class="form-control" name="nombre[]" required><span class="badge badge-light text-secondary"> </span></td>' +
+                '<td class="p-1 pt-3" style="width:14%;" ><label for="nombre"> Nombre:</label><input type="text" class="form-control" name="nombre[]" required><span class="badge badge-light text-secondary"> </span></td>' +
 
-                '<td class="p-1 pt-3"><label for="rut">RUT:</label><input type="text" name="rut[]" class="form-control"required ><span class="badge badge-light text-secondary"> </span></td>' +
+                '<td class="p-1 pt-3" style="width:14%;"><label for="rut">Apellido:</label><input type="text" name="apellido[]" class="form-control"required ><span class="badge badge-light text-secondary"> </span></td>' +
+                '<td class="p-1 pt-3" style="width:14%;"><label for="rut">Fecha de Nacimiento:</label><input type="date" name="fecha_nacimiento[]" class="form-control"required ><span class="badge badge-light text-secondary"> </span></td>' +
 
-                '<td class="p-1 pt-3" style="width:8rem;"><label for="altura">Altura:</label><input type="number" min="0" max="3" step=".01" name="altura[]" class="form-control"><span class="badge badge-light text-secondary">Separar con punto</span></td>' +
 
-                '<td class="p-1 pt-3" style="width:8rem;"><label for="peso">Peso:</label><input type="number" min="0" max="200" name="peso[]" class="form-control"><span class="badge badge-light text-secondary"> </span></td>' +
+                '<td class="p-1 pt-3" style="width:14%;"><label for="rut">RUT:</label><input type="text" name="rut[]" class="form-control"required ><span class="badge badge-light text-secondary"> </span></td>' +
 
-                '<td class="p-1 pt-3 text-center" style="width:8rem;"><button onclick="remove(this)" type="button" class="btn btn-danger">Eliminar</button></td>' +
+                '<td class="p-1 pt-3" style="width:14%;"><label for="altura">Altura:</label><input type="number" min="0" max="3" step=".01" name="altura[]" class="form-control"><span class="badge badge-light text-secondary">Separar con punto</span></td>' +
+
+                '<td class="p-1 pt-3" style="width:14%;"><label for="peso">Peso:</label><input type="number" min="0" max="200" name="peso[]" class="form-control"><span class="badge badge-light text-secondary"> </span></td>' +
+
+                '<td class="p-1 pt-3 text-center" style="width:14%;"><button onclick="remove(this)" type="button" class="btn btn-danger">Eliminar</button></td>' +
 
                 '</tr>' +
 

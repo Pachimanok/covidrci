@@ -1,4 +1,4 @@
-<?php
+<?php   
 
 namespace App\Http\Controllers;
 
@@ -63,6 +63,8 @@ class CertificadoController extends Controller
 
             $asegurado = new Asegurado();
             $asegurado->nombre = $request->get('tomador_nombre');
+            $asegurado->apellido = $request->get('tomador_apellido');
+            $asegurado->fecha_nacimiento = $request->get('tomador_fecha_nacimiento');
             $asegurado->domicilio = $request->get('tomador_domicilio');
             $asegurado->localidad = $request->get('tomador_localidad');
             $asegurado->pais = $request->get('tomador_pais');
@@ -108,6 +110,8 @@ class CertificadoController extends Controller
             
             if($nombre !== null){
                 $nombre = $request->get('nombre');
+                $apellido = $request->get('apellido');
+                $fecha_nacimiento = $request->get('fecha_nacimiento');
                 $rut = $request->get('rut');
                 $altura = $request->get('altura');
                 $peso = $request->get('peso');
@@ -127,6 +131,8 @@ class CertificadoController extends Controller
                 
                     $acompanante = new Asegurado();
                     $acompanante->nombre = $nombre[$i];
+                    $acompanante->apellido = $apellido[$i];
+                    $acompanante->fecha_nacimiento = $fecha_nacimiento[$i];
                     $acompanante->doc_tipo = 'rut';
                     $acompanante->doc_numero = $rut[$i];
                     $acompanante->orden = '2';
@@ -243,6 +249,7 @@ class CertificadoController extends Controller
             'hoy' => Carbon::now()->format('d/m/Y'),
             'poliza' => $certificado->id,
             'tomador' => $certificado->nombre,
+            'tomadora' => $certificado->apellido,
             'rut' => $certificado->doc_numero,
             'domicilio' => $certificado->domicilio,
             'localidad' => $certificado->localidad,

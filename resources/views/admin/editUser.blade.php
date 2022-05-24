@@ -11,7 +11,7 @@
             <h2>Usuario: {{ $user->name }}</h2>
         </div>
         <div class="card bg-light pt-4">
-            <form action="/usuarios/{{ $user->id }}" method="post">
+            <form action="/covidrci/public/usuarios/{{ $user->id }}" method="post">
                 @method('put')
                 @csrf
                 <div class="col-sm-9">
@@ -81,7 +81,7 @@
         <p>USD: {{number_format($transferencia->monto,2)}}.00 - CLP {{number_format($transferencia->monto * $transferencia->tipo_cambio_usd,2)}}</p>
         <div class="row">
             <div class="col-sm-3 d-grid gap-2">
-                <a href="transferencias/{{$transferencia->id_transferencia}}" class="btn @if($transferencia->estado == 'emitida')btn-danger @else btn-success @endif">Detalle</a>
+                <a href="/covidrci/public/transferencias/{{$transferencia->id_transferencia}}" class="btn @if($transferencia->estado == 'emitida')btn-danger @else btn-success @endif">Detalle</a>
             </div>
         </div>
     </div>

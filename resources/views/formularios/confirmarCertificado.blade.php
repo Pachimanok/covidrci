@@ -46,7 +46,7 @@
                                     <div class="card-title">Tomador:</div>
                                 </div>
                                 <div class="card-body">
-                                    Nombre: {{ $asegurado->nombre }} <br>
+                                    Nombre: {{ $asegurado->nombre }} {{ $asegurado->apellido }}<br>
                                     Domicilo: {{ $asegurado->domicilio }}<br>
                                     Localidad: {{ $asegurado->localidad }}<br>
                                     Rut: {{ $asegurado->doc_numero }}<br>
@@ -61,7 +61,7 @@
                                     <div class="card-title">Acompañante:</div>
                                 </div>
                                 <div class="card-body">
-                                    Acompañante: {{ $asegurado->nombre }} <br>
+                                    Acompañante: {{ $asegurado->nombre }} {{ $asegurado->apellido }}<br>
                                     Domicilo: {{ $asegurado->domicilio }}<br>
                                     Localidad: {{ $asegurado->localidad }}<br>
                                     Rut: {{ $asegurado->doc_numero }}<br>
@@ -80,16 +80,16 @@
             <div class="row mt-5">
                 <div class="col-sm-8 mx-auto text-center">
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <form action="certificado/{{ $id_cer }}" method="post">
+                        <form action="/covidrci/public/certificado/{{ $id_cer }}" method="post">
                             @method('put')
                             @csrf
                             <button type="submit" class="btn btn-lg btn-primary" style="width: 13rem;">Emitir
                                 Certificado</button>
                         </form>
-                        <form action="certificado/{{ $id_cer }}" method="post">
+                        <form action="/covidrci/public/certificado/{{ $id_cer }}" method="post">
                             @method('DELETE')
                             @csrf
-                            <button href="/certificado/{{ $id_cer }}"
+                            <button href="/covidrci/public/certificado/{{ $id_cer }}"
                                 onclick="return confirm('¿Está seguro? Se eliminaran todos los datos deberá volver a cargarlos')"
                                 class="btn btn-danger btn-lg" style="margin-left: 1rem; width: 13rem;">No
                                 emitir</button>

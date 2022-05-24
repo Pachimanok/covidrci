@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-9 " style="text-align:right;">           
                 @if(Auth::user()->activo == 'si')
-                <a href="/certificado/create" class="btn btn-success"> + Certificado</a>
+                <a href="/covidrci/public/certificado/create" class="btn btn-success"> + Certificado</a>
             @else
                 <a href="#" class="btn btn-secondary" style="pointer-events: none;"> + Certificado</a><br>
                 <span class="badge badge-light text-danger" >Para emitir certificado debe regularizar cuenta corriente.</span>

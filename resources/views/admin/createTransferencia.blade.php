@@ -53,7 +53,7 @@
             @endif
           </div>
           @if($certificados->count() > 0)
-            <form action="/transferencias" method="post">
+            <form action="/covidrci/public/transferencias" method="post">
             @csrf
             <div class="row mt-5">
               <div class="col-sm-5 mx-auto text-center">

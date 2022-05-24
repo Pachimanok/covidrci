@@ -28,7 +28,7 @@ Route::get('/home', function () {
     if($role == 'Admin'){
 
         $qcertificado =  DB::table('certificados')->join('asegurados','asegurados.id_certificado','=','certificados.id')->groupBy('asegurados.id_certificado')->orderBy('certificados.id','DESC')->get();
-   
+        
         return view('admin.home')->with('certficados',$qcertificado)->with('user',$usuario);
 
     }else{
@@ -47,6 +47,7 @@ Route::resource('certificado', 'App\Http\Controllers\CertificadoController');
 Route::resource('transferencias', 'App\Http\Controllers\transferenciasController');
 Route::resource('usuarios', 'App\Http\Controllers\userController');
 Route::resource('export', 'App\Http\Controllers\excelController');
+Route::resource('estadisticas', 'App\Http\Controllers\estadisticasController');
 Route::resource('prueba', 'App\Http\Controllers\pruebaController');
 
 
