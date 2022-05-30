@@ -17,8 +17,8 @@ class estadisticasController extends Controller
     {
         $now = Carbon::now();
         
-        $transferenciasTodas = DB::table('transferencias')->selectRaw('count(*) as count, certificados.user')->join('certificados','transferencias.id', '=' ,'certificados.id_transferencia')->groupBy('id_transferencia')->get();
-        $transferenciasSemana = DB::table('transferencias')->selectRaw('count(*) as count, certificados.user')->join('certificados','transferencias.id', '=' ,'certificados.id_transferencia')->whereDate('certificados.created_at', $now)->groupBy('id_transferencia')->get();
+        $transferenciasTodas = DB::table('transferencias')->selectRaw('sum(certificados.costo) as sum, count(*) as count, certificados.user')->join('certificados','transferencias.id', '=' ,'certificados.id_transferencia')->groupBy('id_transferencia')->get();
+        $transferenciasSemana = DB::table('transferencias')->selectRaw('sum(certificados.costo) as sum,count(*) as count, certificados.user')->join('certificados','transferencias.id', '=' ,'certificados.id_transferencia')->whereDate('certificados.created_at', $now)->groupBy('id_transferencia')->get();
         return view('admin.Estadisticas')->with('trasferenciasTodas',$transferenciasTodas)->with('trasferenciasSemana',$transferenciasSemana);
     }
 

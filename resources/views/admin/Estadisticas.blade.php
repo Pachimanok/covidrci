@@ -14,6 +14,8 @@
                         <tr>
                             <th class="col-md-6">Usuario</th>
                             <th class="col-md-2 text-center">Cantidad</th>
+                            <th class="col-md-2 text-center">Total</th>
+
                         </tr>
         
                     </thead>
@@ -22,6 +24,8 @@
                             <tr>
                                 <th >{{ $ts->user }}</th>
                                 <td class="text-center">{{ $ts->count }}</td>
+                                <td class="text-center">{{ $ts->sum}}</td>
+
                             </tr>
                         @endforeach
         
@@ -37,6 +41,8 @@
                         <tr>
                             <th class="col-md-6">Usuario</th>
                             <th class="col-md-2 text-center">Cantidad</th>
+                            <th class="col-md-2 text-center">Total</th>
+
                         </tr>
         
                     </thead>
@@ -45,6 +51,8 @@
                             <tr>
                                 <th >{{ $tt->user }}</th>
                                 <td class="text-center">{{ $tt->count }}</td>
+                                <td class="text-center">{{ $tt->sum }}</td>
+                                
                             </tr>
                         @endforeach
         
